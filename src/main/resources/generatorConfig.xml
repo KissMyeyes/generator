@@ -9,7 +9,7 @@
         <!-- 抑制警告 -->
         <property name="suppressTypeWarnings" value="true" />
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.ceiec.baseplatform.util.MyMapper"/>
+            <property name="mappers" value="com.wangwei.util.MyMapper"/>
         </plugin>
 
         <!-- generate entity时，生成hashcode和equals方法 -->

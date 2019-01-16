@@ -1,0 +1,9 @@
+1.编辑 resource下的db.properties
+	1.1 修改数据库配置
+	1.2 修改 domain.namespace （这个是自动生成domain和dao的包空间）
+2.编辑resource下的generatorConfig.xml
+	在文件最下面 table部分，把要自动生成domain的表名，domain名添加进去。
+	注意，每一个表（一个domain）对应一个<table>
+3.application方式执行 GeneratorSqlMapXml.java
+4.刷新项目，你会看到源代码下有了自动生成的domain和Mapper xml文件，拷贝到你的项目即可
+5.清除生成的类文件。

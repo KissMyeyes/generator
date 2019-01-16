@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+            location="D:\Maven_Room_yidai\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
+    <context id="context1">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="suppressTypeWarnings" value="true"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <!--<plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
+            <!--<property name="mappers" value="com.wangwei.util.MyMapper"/>-->
+        <!--</plugin>-->
+        <!--&lt;!&ndash; generate entity时，生成hashcode和equals方法 &ndash;&gt;-->
+        <!--<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>-->
+        <!-- 生成的pojo，将implements Serializable -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+        <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+        <!-- <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+            <property name="addRemarkComments" value="true" />
+        </commentGenerator> -->
+        <commentGenerator type="org.mybatis.generator.MyCommentGenerator">
+        </commentGenerator>
+        <!-- 这里的type里写的是你的实现类的类全路径 -->
+        <!-- <commentGenerator type="org.mybatis.generator.internal.MyCommentGenerator">
+            </commentGenerator> -->
+        <!--数据库驱动 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.1.5:3306/yidai_test" userId="yidai_dev"
+                        password="yidai_devmysql"/>
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和
+            NUMERIC 类型解析为java.math.BigDecimal -->
+        <!-- <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver> -->
+        <javaTypeResolver type="org.mybatis.generator.MyJavaTypeResolver">
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.yidai.model.entity.basic"
+                            targetProject=".\src\main\java"/>
+        <sqlMapGenerator targetPackage="mybatis"
+                         targetProject=".\src\main\resources"/>
+        <javaClientGenerator targetPackage="com.yidai.business.dao.basic"
+                             targetProject=".\src\main\java" type="XMLMAPPER"/>
+        <!--<table schema="yidai" tableName="user_account_log">-->
+        <!--&lt;!&ndash; <columnOverride column="???" property="???" /> &ndash;&gt;-->
+        <!--&lt;!&ndash; <columnOverride column="data_text" javaType="java.lang.String" jdbcType="VARCHAR"-->
+        <!--/> &ndash;&gt;-->
+        <!--</table>-->
+        <table schema="yidai" tableName="award_document"
+               enableCountByExample="false" enableDeleteByExample="flase"
+               enableInsert="true"
+               enableUpdateByPrimaryKey="true"
+               enableSelectByExample="false" enableUpdateByExample="false"
+        >
+            <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="disable" javaType="java.lang.Boolean"
+                            jdbcType="BOOLEAN"/>
+            <columnOverride column="html_text" javaType="java.lang.String"
+                            jdbcType="VARCHAR"/>
+        </table>
+        <table schema="yidai" tableName="award_package" enableCountByExample="false" enableDeleteByExample="flase"
+               enableInsert="true"
+               enableUpdateByPrimaryKey="true"
+               enableSelectByExample="false" enableUpdateByExample="false"
+        >
+            <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="disable" javaType="java.lang.Boolean"
+                            jdbcType="BOOLEAN"/>
+        </table>
+        <table schema="yidai" tableName="award_code" enableCountByExample="false" enableDeleteByExample="flase"
+               enableInsert="true"
+               enableUpdateByPrimaryKey="true"
+               enableSelectByExample="false" enableUpdateByExample="false"
+        >
+            <generatedKey column="id" sqlStatement="JDBC"/>
+            <columnOverride column="disable" javaType="java.lang.Boolean"
+                            jdbcType="BOOLEAN"/>
+        </table>
+        <table schema="yidai" tableName="user_award" enableCountByExample="false" enableDeleteByExample="flase"
+               enableInsert="true"
+               enableUpdateByPrimaryKey="true"
+               enableSelectByExample="false" enableUpdateByExample="false"
+        >
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+    </context>
+</generatorConfiguration>
