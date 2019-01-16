@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidai.business.dao.basic.AwardDocumentMapper">
+    <resultMap id="BaseResultMap" type="com.yidai.model.entity.basic.AwardDocument">
+        <!-- 添加你的注释 -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="package_id" property="packageId" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="html_name" property="htmlName" jdbcType="VARCHAR"/>
+        <result column="html_text" property="htmlText" jdbcType="VARCHAR"/>
+        <result column="h5_name" property="h5Name" jdbcType="VARCHAR"/>
+        <result column="h5_text" property="h5Text" jdbcType="VARCHAR"/>
+        <result column="file_name" property="fileName" jdbcType="VARCHAR"/>
+        <result column="file_url" property="fileUrl" jdbcType="VARCHAR"/>
+        <result column="disable" property="disable" jdbcType="BOOLEAN"/>
+        <result column="operator_id" property="operatorId" jdbcType="INTEGER"/>
+        <result column="bind_time" property="bindTime" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!-- 添加你的注释 -->
+        id, package_id, type, title, html_name, html_text, h5_name, h5_text, file_name, file_url,
+        disable, operator_id, bind_time, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        <!-- 添加你的注释 -->
+        select
+        <include refid="Base_Column_List"/>
+        from award_document
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!-- 添加你的注释 -->
+        delete from award_document
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yidai.model.entity.basic.AwardDocument" useGeneratedKeys="true"
+            keyProperty="id">
+        <!-- 添加你的注释 -->
+        insert into award_document (package_id, type, title,
+        html_name, html_text, h5_name,
+        h5_text, file_name, file_url,
+        disable, operator_id, bind_time,
+        create_time, update_time)
+        values (#{packageId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+        #{htmlName,jdbcType=VARCHAR}, #{htmlText,jdbcType=VARCHAR}, #{h5Name,jdbcType=VARCHAR},
+        #{h5Text,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR},
+        #{disable,jdbcType=BOOLEAN}, #{operatorId,jdbcType=INTEGER}, #{bindTime,jdbcType=TIMESTAMP},
+        #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yidai.model.entity.basic.AwardDocument" useGeneratedKeys="true"
+            keyProperty="id">
+        <!-- 添加你的注释 -->
+        insert into award_document
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="packageId != null">
+                package_id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="htmlName != null">
+                html_name,
+            </if>
+            <if test="htmlText != null">
+                html_text,
+            </if>
+            <if test="h5Name != null">
+                h5_name,
+            </if>
+            <if test="h5Text != null">
+                h5_text,
+            </if>
+            <if test="fileName != null">
+                file_name,
+            </if>
+            <if test="fileUrl != null">
+                file_url,
+            </if>
+            <if test="disable != null">
+                disable,
+            </if>
+            <if test="operatorId != null">
+                operator_id,
+            </if>
+            <if test="bindTime != null">
+                bind_time,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="packageId != null">
+                #{packageId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="htmlName != null">
+                #{htmlName,jdbcType=VARCHAR},
+            </if>
+            <if test="htmlText != null">
+                #{htmlText,jdbcType=VARCHAR},
+            </if>
+            <if test="h5Name != null">
+                #{h5Name,jdbcType=VARCHAR},
+            </if>
+            <if test="h5Text != null">
+                #{h5Text,jdbcType=VARCHAR},
+            </if>
+            <if test="fileName != null">
+                #{fileName,jdbcType=VARCHAR},
+            </if>
+            <if test="fileUrl != null">
+                #{fileUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="disable != null">
+                #{disable,jdbcType=BOOLEAN},
+            </if>
+            <if test="operatorId != null">
+                #{operatorId,jdbcType=INTEGER},
+            </if>
+            <if test="bindTime != null">
+                #{bindTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yidai.model.entity.basic.AwardDocument">
+        <!-- 添加你的注释 -->
+        update award_document
+        <set>
+            <if test="packageId != null">
+                package_id = #{packageId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="htmlName != null">
+                html_name = #{htmlName,jdbcType=VARCHAR},
+            </if>
+            <if test="htmlText != null">
+                html_text = #{htmlText,jdbcType=VARCHAR},
+            </if>
+            <if test="h5Name != null">
+                h5_name = #{h5Name,jdbcType=VARCHAR},
+            </if>
+            <if test="h5Text != null">
+                h5_text = #{h5Text,jdbcType=VARCHAR},
+            </if>
+            <if test="fileName != null">
+                file_name = #{fileName,jdbcType=VARCHAR},
+            </if>
+            <if test="fileUrl != null">
+                file_url = #{fileUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="disable != null">
+                disable = #{disable,jdbcType=BOOLEAN},
+            </if>
+            <if test="operatorId != null">
+                operator_id = #{operatorId,jdbcType=INTEGER},
+            </if>
+            <if test="bindTime != null">
+                bind_time = #{bindTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yidai.model.entity.basic.AwardDocument">
+        <!-- 添加你的注释 -->
+        update award_document
+        set package_id = #{packageId,jdbcType=INTEGER},
+        type = #{type,jdbcType=INTEGER},
+        title = #{title,jdbcType=VARCHAR},
+        html_name = #{htmlName,jdbcType=VARCHAR},
+        html_text = #{htmlText,jdbcType=VARCHAR},
+        h5_name = #{h5Name,jdbcType=VARCHAR},
+        h5_text = #{h5Text,jdbcType=VARCHAR},
+        file_name = #{fileName,jdbcType=VARCHAR},
+        file_url = #{fileUrl,jdbcType=VARCHAR},
+        disable = #{disable,jdbcType=BOOLEAN},
+        operator_id = #{operatorId,jdbcType=INTEGER},
+        bind_time = #{bindTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

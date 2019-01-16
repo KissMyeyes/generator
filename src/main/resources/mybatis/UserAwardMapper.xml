@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidai.business.dao.basic.UserAwardMapper">
+    <resultMap id="BaseResultMap" type="com.yidai.model.entity.basic.UserAward">
+        <!-- 添加你的注释 -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="package_id" property="packageId" jdbcType="INTEGER"/>
+        <result column="award_id" property="awardId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!-- 添加你的注释 -->
+        id, type, package_id, award_id, user_id, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        <!-- 添加你的注释 -->
+        select
+        <include refid="Base_Column_List"/>
+        from user_award
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!-- 添加你的注释 -->
+        delete from user_award
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yidai.model.entity.basic.UserAward" useGeneratedKeys="true" keyProperty="id">
+        <!-- 添加你的注释 -->
+        insert into user_award (type, package_id, award_id,
+        user_id, create_time, update_time
+        )
+        values (#{type,jdbcType=INTEGER}, #{packageId,jdbcType=INTEGER}, #{awardId,jdbcType=INTEGER},
+        #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.yidai.model.entity.basic.UserAward" useGeneratedKeys="true"
+            keyProperty="id">
+        <!-- 添加你的注释 -->
+        insert into user_award
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="type != null">
+                type,
+            </if>
+            <if test="packageId != null">
+                package_id,
+            </if>
+            <if test="awardId != null">
+                award_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="packageId != null">
+                #{packageId,jdbcType=INTEGER},
+            </if>
+            <if test="awardId != null">
+                #{awardId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yidai.model.entity.basic.UserAward">
+        <!-- 添加你的注释 -->
+        update user_award
+        <set>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="packageId != null">
+                package_id = #{packageId,jdbcType=INTEGER},
+            </if>
+            <if test="awardId != null">
+                award_id = #{awardId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yidai.model.entity.basic.UserAward">
+        <!-- 添加你的注释 -->
+        update user_award
+        set type = #{type,jdbcType=INTEGER},
+        package_id = #{packageId,jdbcType=INTEGER},
+        award_id = #{awardId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

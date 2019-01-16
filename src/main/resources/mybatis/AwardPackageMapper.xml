@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yidai.business.dao.basic.AwardPackageMapper">
+    <resultMap id="BaseResultMap" type="com.yidai.model.entity.basic.AwardPackage">
+        <!-- 添加你的注释 -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="award_num" property="awardNum" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="send_num" property="sendNum" jdbcType="INTEGER"/>
+        <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="disable" property="disable" jdbcType="BOOLEAN"/>
+        <result column="operator_id" property="operatorId" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!-- 添加你的注释 -->
+        id, type, title, award_num, status, send_num, begin_time, end_time, disable, operator_id,
+        create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        <!-- 添加你的注释 -->
+        select
+        <include refid="Base_Column_List"/>
+        from award_package
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!-- 添加你的注释 -->
+        delete from award_package
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yidai.model.entity.basic.AwardPackage" useGeneratedKeys="true"
+            keyProperty="id">
+        <!-- 添加你的注释 -->
+        insert into award_package (type, title, award_num,
+        status, send_num, begin_time,
+        end_time, disable, operator_id,
+        create_time, update_time)
+        values (#{type,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{awardNum,jdbcType=INTEGER},
+        #{status,jdbcType=INTEGER}, #{sendNum,jdbcType=INTEGER}, #{beginTime,jdbcType=TIMESTAMP},
+        #{endTime,jdbcType=TIMESTAMP}, #{disable,jdbcType=BOOLEAN}, #{operatorId,jdbcType=INTEGER},
+        #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yidai.model.entity.basic.AwardPackage" useGeneratedKeys="true"
+            keyProperty="id">
+        <!-- 添加你的注释 -->
+        insert into award_package
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="type != null">
+                type,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="awardNum != null">
+                award_num,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="sendNum != null">
+                send_num,
+            </if>
+            <if test="beginTime != null">
+                begin_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="disable != null">
+                disable,
+            </if>
+            <if test="operatorId != null">
+                operator_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="awardNum != null">
+                #{awardNum,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="sendNum != null">
+                #{sendNum,jdbcType=INTEGER},
+            </if>
+            <if test="beginTime != null">
+                #{beginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="disable != null">
+                #{disable,jdbcType=BOOLEAN},
+            </if>
+            <if test="operatorId != null">
+                #{operatorId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yidai.model.entity.basic.AwardPackage">
+        <!-- 添加你的注释 -->
+        update award_package
+        <set>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="awardNum != null">
+                award_num = #{awardNum,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="sendNum != null">
+                send_num = #{sendNum,jdbcType=INTEGER},
+            </if>
+            <if test="beginTime != null">
+                begin_time = #{beginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="disable != null">
+                disable = #{disable,jdbcType=BOOLEAN},
+            </if>
+            <if test="operatorId != null">
+                operator_id = #{operatorId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yidai.model.entity.basic.AwardPackage">
+        <!-- 添加你的注释 -->
+        update award_package
+        set type = #{type,jdbcType=INTEGER},
+        title = #{title,jdbcType=VARCHAR},
+        award_num = #{awardNum,jdbcType=INTEGER},
+        status = #{status,jdbcType=INTEGER},
+        send_num = #{sendNum,jdbcType=INTEGER},
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+        disable = #{disable,jdbcType=BOOLEAN},
+        operator_id = #{operatorId,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
